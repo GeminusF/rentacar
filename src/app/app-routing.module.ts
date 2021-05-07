@@ -1,23 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarComponent } from './component/car/car.component';
+import { CardetailComponent } from './component/cardetail/cardetail.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: CarComponent,
   },
   {
-    path: "cars",
+    path: 'cars',
     component: CarComponent,
   },
   {
-    path: "cars/brand/:brandId",
+    path: 'cars/brand/:brandId',
     component: CarComponent,
   },
   {
-    path: "cars/color/:colorId",
+    path: 'cars/color/:colorId',
     component: CarComponent,
+  },
+  {
+    path: 'cars/cardetail',
+    component: CardetailComponent,
+  },
+  {
+    path: 'cars/cardetail/:carId',
+    component: CardetailComponent,
   },
 ];
 

@@ -1,0 +1,26 @@
+<div class="card-w75" *ngFor="let cardetail of cardetails">
+  <div class="row g-0">
+    <div
+      *ngFor="let carimage of carImages; let i = index"
+      class="col-md-6"
+      [ngClass]="{ active: i == 0 }"
+    >
+      <img
+        src="https://localhost:44350/{{ carimage.imagePath }}"
+        class="card-img"
+        alt="..."
+      />
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card-header">{{ cardetail.carName }}</div>
+    <div class="card-body">
+      <h5 class="card-title">Maşının məlumatları</h5>
+      <p class="card-text-center">Brand : {{ cardetail.brandName }}</p>
+      <p class="card-text-center">Rəng : {{ cardetail.colorName }}</p>
+      <p class="card-text-center">Günlük Qiymət : {{ cardetail.dailyPrice }}</p>
+      <a href="#" class="btn btn-success">Kirayələ</a>
+    </div>
+  </div>
+</div>
+<!-- şəkilləri əlavə eləmək lazımdı -->
