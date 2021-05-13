@@ -1,7 +1,25 @@
-<div *ngIf = "dataLoaded == false"  class="spinner-border text-warning" role="status">
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-warning"
+  role="status"
+>
   <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf ="dataLoaded == true"  class="table">
+<div class="mb-3">
+  <label for="filterText" class="form-label">Maşın Axtarışı</label>
+  <input
+    type="text"
+    [(ngModel)] ="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Axtardığınız model"
+  />
+</div>
+<div class="alert alert-info" *ngIf = "filterText.length>2">
+  <strong>{{filterText}}</strong> axtardınız
+</div>
+
+<table *ngIf="dataLoaded == true" class="table">
   <thead>
     <tr>
       <th>Id</th>
@@ -9,15 +27,27 @@
       <th>Rəng</th>
       <th>Buraxılış İli</th>
       <th>Günlük Qiymət</th>
+      <th>Kampanya Qiymət</th>
       <th>Model</th>
     </tr>
   </thead>
-  <tr *ngFor="let car of cars">
+  <tr *ngFor="let car of cars | filterPipe:filterText">
     <td>{{ car.id }}</td>
     <td>{{ car.brandId }}</td>
     <td>{{ car.colorId }}</td>
     <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice }}</td>
-    <td>{{ car.description }}</td>
+    <td>{{ car.dailyPrice | currency: "₼" }}</td>
+    <td>{{ car.dailyPrice | discount: 10 | currency: "₼" }}</td>
+    <td>{{ car.description | uppercase }}</td>
   </tr>
 </table>
+
+<!-- <label for="exampleDataList" class="form-label">Datalist example</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+<datalist id="datalistOptions">
+  <option value="San Francisco">
+  <option value="New York">
+  <option value="Seattle">
+  <option value="Los Angeles">
+  <option value="Chicago">
+</datalist> -->
