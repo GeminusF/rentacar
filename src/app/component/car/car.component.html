@@ -9,14 +9,14 @@
   <label for="filterText" class="form-label">Maşın Axtarışı</label>
   <input
     type="text"
-    [(ngModel)] ="filterText"
+    [(ngModel)]="filterText"
     class="form-control"
     id="filterText"
     placeholder="Axtardığınız model"
   />
 </div>
-<div class="alert alert-info" *ngIf = "filterText.length>2">
-  <strong>{{filterText}}</strong> axtardınız
+<div class="alert alert-info" *ngIf="filterText.length > 2">
+  <strong>{{ filterText }}</strong> axtardınız
 </div>
 
 <table *ngIf="dataLoaded == true" class="table">
@@ -29,17 +29,23 @@
       <th>Günlük Qiymət</th>
       <th>Kampanya Qiymət</th>
       <th>Model</th>
+      <th></th>
     </tr>
   </thead>
-  <tr *ngFor="let car of cars | filterPipe:filterText">
-    <td>{{ car.id }}</td>
-    <td>{{ car.brandId }}</td>
-    <td>{{ car.colorId }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice | currency: "₼" }}</td>
-    <td>{{ car.dailyPrice | discount: 10 | currency: "₼" }}</td>
-    <td>{{ car.description | uppercase }}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let car of cars | filterPipe: filterText">
+      <td>{{ car.id }}</td>
+      <td>{{ car.brandId }}</td>
+      <td>{{ car.colorId }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.dailyPrice | currency: "₼" }}</td>
+      <td>{{ car.dailyPrice | discount: 10 | currency: "₼" }}</td>
+      <td>{{ car.description | uppercase }}</td>
+      <td>
+        <button (click)="addToGarage(car)" type="button" class="btn btn-success btn-sm">Kirayələ</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- <label for="exampleDataList" class="form-label">Datalist example</label>
