@@ -18,6 +18,7 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
 import { from } from 'rxjs';
+import { GarageSummaryComponent } from './component/garage-summary/garage-summary.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { from } from 'rxjs';
     CardetailComponent,
     DiscountPipe,
     FilterPipePipe,
+    GarageSummaryComponent,
   ],
   imports: [
     BrowserModule,

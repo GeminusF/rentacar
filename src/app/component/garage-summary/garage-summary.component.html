@@ -1,0 +1,22 @@
+<li *ngIf="garageItems.length > 0" class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    id="navbarDropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Qaraj
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li *ngFor="let garageItem of garageItems">
+      <a>{{ garageItem.car.description }}</a>
+      <span class="badge rounded-pill bg-info text-dark">{{
+        garageItem.quantity
+      }}</span>
+      <span (click) = "removeFromGarage(garageItem.car)" class="badge rounded-pill bg-danger text-dark">sil</span>
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li><a class="dropdown-item">Qaraja get</a></li>
+  </ul>
+</li>

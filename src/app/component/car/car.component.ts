@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
+import { GarageService } from 'src/app/services/garage.service';
 
 @Component({
   selector: 'app-car',
@@ -16,7 +17,8 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private garageService: GarageService
   ) {}
 
   ngOnInit(): void {
@@ -60,5 +62,6 @@ export class CarComponent implements OnInit {
 
   addToGarage(car: Car) {
     this.toastrService.success("Qaraja çəkildi", car.description);
+    this.garageService.addToGarage(car);
   }
 }
